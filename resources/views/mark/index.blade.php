@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('contentBody')
-<form action="{{route('price.import')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.mark.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label class="form-label" for="customFileLabel">Excel file</label>

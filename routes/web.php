@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\MarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,7 @@ Route::group(['as'=>'admin.'],function(){
 
     Route::resource('product',ProductController::class);
 
+    Route::resource('mark',MarkController::class);
 
 });
 

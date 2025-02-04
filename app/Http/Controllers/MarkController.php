@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MarkStoreRequest;
 use Illuminate\Http\Request;
 
 class MarkController extends Controller
@@ -11,7 +12,7 @@ class MarkController extends Controller
      */
     public function index()
     {
-        //
+        return view('mark.index');
     }
 
     /**
@@ -25,9 +26,11 @@ class MarkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MarkStoreRequest $request)
     {
-        //
+        //dd($request);
+        $validated=$request->validated();
+
     }
 
     /**
@@ -61,4 +64,6 @@ class MarkController extends Controller
     {
         //
     }
+
+    
 }
