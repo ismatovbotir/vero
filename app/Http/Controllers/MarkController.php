@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MarkStoreRequest;
 use Illuminate\Http\Request;
+use App\Models\Transaction;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\MarkImport;
 
 class MarkController extends Controller
 {
@@ -12,7 +15,8 @@ class MarkController extends Controller
      */
     public function index()
     {
-        return view('mark.index');
+        $data=Transaction::paginate(20);
+        return view('mark.index',compact('data'));
     }
 
     /**
@@ -20,7 +24,7 @@ class MarkController extends Controller
      */
     public function create()
     {
-        //
+        return view('mark.create');
     }
 
     /**
@@ -30,6 +34,9 @@ class MarkController extends Controller
     {
         //dd($request);
         $validated=$request->validated();
+        Excel::import(new MarkImport,$request->file('xls') );
+        
+        return to_route('mark.index')->with('success', 'All good!');
 
     }
 
