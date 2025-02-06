@@ -30,7 +30,7 @@
                                    
                                 </th>
                                 <th class="tb-tnx-info">
-                                    
+                                    Miqdor
                                    
                                 </th>
                                 
@@ -40,7 +40,7 @@
                             @foreach($data as $trans)
                             <tr class="tb-tnx-item">
                                 <td class="tb-tnx-id">
-                                    <a href="{{route('admin.product.show',['product'=>$product->id])}}"><span>{{$trans->id}}</span></a>
+                                    <a href="{{route('admin.mark.show',['mark'=>$trans->id])}}"><span>{{$trans->id}}</span></a>
                                 </td>
                                 
                                 <td class="tb-tnx-amount is-alt">
@@ -48,6 +48,9 @@
                                         <span class="amount">{{$trans->created_at}}</span>
                                     
                                     
+                                </td>
+                                <td>
+                                    {{$trans->marks_count}}
                                 </td>
                                 
                                 

@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('marks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('transaction_id')->nullable();
-            $table->foreignId('product_id');
+            
+            $table->string('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+            
             $table->string('sn')->unique();
-            $table->string('mark')->unique();
+            $table->string('mark')->nullable();
             $table->integer('state')->default('1');
             $table->foreignId('user_id')->nullable();
             $table->timestamps();

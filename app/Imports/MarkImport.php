@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Mark;
 use App\Models\Transaction;
+use App\Models\Product;
 //use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -19,12 +20,23 @@ class MarkImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         $trans = Transaction::create();
+        $art='';
         foreach ($rows as $row) {
+            //dd($row);
+            if ($art!=$row['artikul']){
+                $articul = Product::firstOrCreate(
+                    ['id' => $row["artikul"]],
+                    ['name' => $row["naimenovaniia"],'gtin' => $row["strix_kod"]]
+                );
+                $art=$articul->id;
+            }
             
-            Mark::create([
+            Mark::insertOrIgnore([
+                [
                    'product_id' => $row['artikul'],
-                   'sn' => $row['sn'],
+                   'sn' => $row['seriia_nomer'],
                    'transaction_id' => $trans->id
+                ]
             ]);
                        
         }

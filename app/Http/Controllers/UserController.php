@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data=User::paginate(20);
+        $data=User::where('id','>',1)->with('role')->paginate(20);
         return view('user.index',['data'=>$data]);
     }
 
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles=Role::where('id','>',1)->with('role')->get();
+        $roles=Role::where('id','>',1)->get();
         return view('user.create',compact('roles'));
 
     }

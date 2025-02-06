@@ -15,7 +15,8 @@ class MarkController extends Controller
      */
     public function index()
     {
-        $data=Transaction::paginate(20);
+        $data=Transaction::withCount('marks')->paginate(20);
+        //dd($data);
         return view('mark.index',compact('data'));
     }
 
@@ -36,7 +37,7 @@ class MarkController extends Controller
         $validated=$request->validated();
         Excel::import(new MarkImport,$request->file('xls') );
         
-        return to_route('mark.index')->with('success', 'All good!');
+        return to_route('admin.mark.index')->with('success', 'All good!');
 
     }
 
