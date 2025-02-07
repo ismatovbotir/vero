@@ -35,8 +35,8 @@ class MarkController extends Controller
     {
         //dd($request);
         $validated=$request->validated();
-        Excel::import(new MarkImport,$request->file('xls') );
-        
+        $d=Excel::import(new MarkImport,$request->file('xls'));
+       
         return to_route('admin.mark.index')->with('success', 'All good!');
 
     }
