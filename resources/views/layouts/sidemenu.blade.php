@@ -16,7 +16,7 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     <li class="nk-menu-item">
-                        <a href="" class="nk-menu-link">
+                        <a href="{{route('admin.match.index')}}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                             <span class="nk-menu-text">Match</span>
                         </a>

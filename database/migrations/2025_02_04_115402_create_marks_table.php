@@ -23,6 +23,10 @@ return new class extends Migration
             $table->integer('state')->default('1');
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
+
+            $table->index('mark');
+            $table->index('sn');
+
         });
     }
 

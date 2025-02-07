@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->foreignId('user_id')->default(1);
             $table->timestamps();
+            $table->index('id');
         });
     }
 
