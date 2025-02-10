@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -65,15 +66,43 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user=User::where('id',$id)->with('role')->first();
+        $roles=Role::where('id','>',1)->get();
+        //dd($user);
+        return view('user.edit',compact('user','roles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, string $id)
     {
-        //
+        $name=$request->input('name');
+        $email=$request->input('email');
+        $role=$request->input('role');
+        $password=$request->input('password');
+        //dd($password);
+        if($password==null){
+            $user=User::where('id',$id)->update(
+                [
+                    'name'=>$name,
+                    'email'=>$email,
+                    'role_id'=>$role
+                ]
+            );
+        }else{
+            $user=User::where('id',$id)->update(
+                [
+                    'name'=>$name,
+                    'email'=>$email,
+                    'role_id'=>$role,
+                    'passord'=>Hash::make($password)
+                ]
+            );
+
+        }
+       
+        return to_route("admin.user.index");
     }
 
     /**

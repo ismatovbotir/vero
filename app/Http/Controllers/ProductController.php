@@ -44,7 +44,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product=Product::where('id',$id)->first();
+        //dd($user);
+        return view('product.show',compact('product'));
     }
 
     /**
@@ -52,7 +54,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product=Product::where('id',$id)->first();
+        //dd($user);
+        return view('product.update',compact('product'));
     }
 
     /**
@@ -60,7 +64,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Product::where('id',$id)->update(
+            [
+                'name'=>$request->input("name"),
+                'gtin'=>$request->input("gtin")
+            ]
+        );
+        return to_route('admin.product.index');
     }
 
     /**

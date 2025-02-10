@@ -34,7 +34,7 @@
                                                     <em class="icon ni ni-user"></em>
                                                 </div>
                                                 <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="name">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                                         <em class="icon ni ni-mail"></em>
                                                     </div>
                                                     <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="email">
-                                                   
+
                                                 </div>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@
                                                     <em class="icon ni ni-lock"></em>
                                                 </div>
                                                 <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="password">
-                                                
+
                                             </div>
                                         </div>
 
@@ -76,9 +76,9 @@
                                                         @foreach($roles as $role)
                                                         <option value="{{$role->id}}">{{$role->name}}</option>
                                                         @endforeach
-                                                       
+
                                                     </select>
-                                                   
+
                                                 </div>
 
                                             </div>
@@ -86,19 +86,14 @@
                                     </div>
                                 </div>
                                 <div class="row gy-4">
-                                    <div class="nk-block-between g-3">
-                                        <div class="col-sm-6">
-                                            <div class="form-group ml-2">
 
-
-                                                <button class="btn btn-success">Save</button>
-
-                                            </div>
-                                        </div>
-
+                                    <div class="d-flex">
+                                        <button class="btn btn-success ml-2 mr-2">Save</button>
+                                        <a class="btn btn-danger" href="{{route('admin.user.index')}}">Cancel</a>
                                     </div>
+
                                 </div>
-                                <div class="row gy-">
+                                <div class="row gy-4">
                                     @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>

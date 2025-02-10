@@ -5,13 +5,13 @@
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between g-3">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">New Product</h3>
+                <h3 class="nk-block-title page-title">Show Product: {{$product->name}}</h3>
                 <div class="nk-block-des text-soft">
 
                 </div>
             </div><!-- .nk-block-head-content -->
             <div class="nk-block-head-content">
-
+            <a href="{{route('admin.product.index')}}" class="btn btn-danger"><em class="icon ni ni-home"></em></a>
             </div><!-- .nk-block-head-content -->
         </div><!-- .nk-block-between -->
     </div><!-- .nk-block-head -->
@@ -20,18 +20,18 @@
             <div class="card-inner-group">
 
                 <div class="card-inner p-0">
-                    <form action="{{route('admin.product.store')}}" method="POST">
+                    <form >
                         @csrf
                         <div class="card-inner">
                             <div class="preview-block">
-                                <span class="preview-title-lg overline-title">Create New Product</span>
+                                <span class="preview-title-lg overline-title">View Product</span>
                                 <div class="row gy-4">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form-label" for="default-03">Art</label>
                                             <div class="form-control-wrap">
                                                
-                                                <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="id">
+                                                <input type="text" class="form-control" id="default-03" placeholder="Input placeholder"  value="{{$product->id}}" disabled>
                                                 
                                             </div>
                                         </div>
@@ -43,7 +43,7 @@
                                                 <label class="form-label" for="default-03">Name</label>
                                                 <div class="form-control-wrap">
                                                     
-                                                    <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="name">
+                                                    <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" value="{{$product->name}}" disabled>
                                                    
                                                 </div>
                                             </div>
@@ -54,7 +54,7 @@
                                             <label class="form-label" for="default-03">GTIN</label>
                                             <div class="form-control-wrap">
                                                
-                                                <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="gtin">
+                                                <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" value="{{$product->gtin}}" disabled>
                                                 
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row gy-4">
+                                {{--<div class="row gy-4">
                                     
                                             <div class="d-flex">
 
@@ -82,7 +82,7 @@
 
                                             </div>
                                         
-                                </div>
+                                </div>--}}
                                 <div class="row gy-4 mt-3">
                                     @if ($errors->any())
                                     <div class="alert alert-danger">

@@ -5,7 +5,7 @@
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between g-3">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">New Product</h3>
+                <h3 class="nk-block-title page-title">Edit Product: {{$product->name}}</h3>
                 <div class="nk-block-des text-soft">
 
                 </div>
@@ -20,18 +20,19 @@
             <div class="card-inner-group">
 
                 <div class="card-inner p-0">
-                    <form action="{{route('admin.product.store')}}" method="POST">
+                    <form action="{{route('admin.product.update',['product'=>$product->id])}}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="card-inner">
                             <div class="preview-block">
-                                <span class="preview-title-lg overline-title">Create New Product</span>
+                                <span class="preview-title-lg overline-title">Update Product: {{$product->name}}</span>
                                 <div class="row gy-4">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="default-03">Art</label>
+                                            <label class="form-label" for="id">Art</label>
                                             <div class="form-control-wrap">
                                                
-                                                <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="id">
+                                                <input type="text" class="form-control" id="id" value="{{$product->id}}" name="id" id="id" disabled >
                                                 
                                             </div>
                                         </div>
@@ -40,10 +41,10 @@
                                         <div class="form-group">
 
                                             <div class="form-control-wrap">
-                                                <label class="form-label" for="default-03">Name</label>
+                                                <label class="form-label" for="name">Name</label>
                                                 <div class="form-control-wrap">
                                                     
-                                                    <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="name">
+                                                    <input type="text" class="form-control" id="name" value="{{$product->name}}" name="name">
                                                    
                                                 </div>
                                             </div>
@@ -51,10 +52,10 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="default-03">GTIN</label>
+                                            <label class="form-label" for="gtin">GTIN</label>
                                             <div class="form-control-wrap">
                                                
-                                                <input type="text" class="form-control" id="default-03" placeholder="Input placeholder" name="gtin">
+                                                <input type="text" class="form-control" id="gtin" value="{{$product->gtin}}" name="gtin">
                                                 
                                             </div>
                                         </div>
@@ -76,7 +77,7 @@
                                             <div class="d-flex">
 
 
-                                                <button class="btn btn-success ml-2 mr-2">Save</button>
+                                                <button class="btn btn-success ml-2 mr-2">Update</button>
                                                 
                                                 <a class="btn btn-danger" href="{{route('admin.product.index')}}">Home</a>
 

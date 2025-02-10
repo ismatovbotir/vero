@@ -32,7 +32,7 @@
                                    
                                 </th>
                                 <th class="tb-tnx-info">
-                                    
+                                 Action   
                                    
                                 </th>
                                 
@@ -42,7 +42,7 @@
                             @foreach($data as $product)
                             <tr class="tb-tnx-item">
                                 <td class="tb-tnx-id">
-                                    <a href="{{route('admin.product.show',['product'=>$product->id])}}"><span>{{$product->id}}</span></a>
+                                    <span>{{$product->id}}</span>
                                 </td>
                                 <td class="tb-tnx-info">
                                     
@@ -56,9 +56,18 @@
                                     
                                     
                                 </td>
-                                <td class="tb-tnx-amount is-alt">
-                                      <a href="{{route('admin.product.show',['product'=>$product->id])}}"></a>
-                                    
+                              
+                                <td>
+                                <div class="dropdown">
+                                        <a class="text-soft dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown" aria-expanded="true"><em class="icon ni ni-more-h"></em></a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-xs" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-100px, 36px, 0px);">
+                                            <ul class="link-list-plain">
+                                                <li><a href="{{route('admin.product.show',['product'=>$product->id])}}">View</a></li>
+                                                <li><a href="{{route('admin.product.edit',['product'=>$product->id])}}">Edit</a></li>
+                                                {{--    <li><a href="#">Delete</a></li>--}}
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </td>
                                 
                             </tr><!-- tb-tnx-item -->
