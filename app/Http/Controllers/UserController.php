@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -45,7 +46,7 @@ class UserController extends Controller
         'password'=>Hash::make($validated['password'])
         ],
         ['email'],
-        ['name','password']
+        ['name','password'] 
     );
        
        return to_route('admin.user.index');
